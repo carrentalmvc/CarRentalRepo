@@ -13,5 +13,12 @@ namespace Mvc.CarRentalApplication
 
             return string.Empty;
         }
+
+        public bool IsValidQueryString()
+        {
+
+            return true;
+        }
     }
+
 }
