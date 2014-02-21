@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+     @Styles.Render("~/Content/SiteWide")     
+     @Styles.Render("~/Content/themes/base/css")  
+     @Scripts.Render("~/bundles/jquery")    
+     @Scripts.Render("~/bundles/jqueryval")
+     @Scripts.Render("~/bundles/jqueryui")     
+     @Scripts.Render("~/bundles/modernizr")     
+     @Scripts.Render("~/bundles/knockoutjs")
+     <script src="@Url.Content("~/Scripts/Application/Date.js")" type="text/javascript"></script>   
+     @Scripts.Render("~/bundles/MomentJs")  
+</head>
+<body>
+    <header>
+        <h3>Joe's Car Rental Application </h3>
+        <div id="Topmenu">            
+            @Html.ActionLink("Create an Account", null, routeValues: null, htmlAttributes: new { id = "registerLink", href = "#" })            
+        </div>
+        
+    </header>
+    <div class="childView">
+        <div id="loginDiv">
+            @RenderBody()
+        </div>         
+    </div>
+    <footer>
+        This is Footer
+
+    </footer>
+     
+    @RenderSection("Scripts" ,required:false)
+    @RenderSection("viewStyles", required: false)
+</body>
+</html>

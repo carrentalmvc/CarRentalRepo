@@ -1,0 +1,45 @@
+﻿@model CarRentals.Model.Register
+
+<div id="registerDiv">
+  
+
+   @using(Html.BeginForm("Register","Register")) 
+   {
+       @Html.ValidationSummary(true)
+
+       @Html.AntiForgeryToken()
+       
+       @Html.LabelFor(m => m.UserName)
+       @Html.TextBoxFor(m => m.UserName)
+
+
+       @Html.LabelFor(m => m.Password)
+       @Html.PasswordFor(m => m.Password)
+
+       @Html.LabelFor(m => m.ConfirmPassword)
+       @Html.PasswordFor(m => m.ConfirmPassword)
+
+       @Html.LabelFor(m => m.Email)
+       @Html.TextBoxFor(m => m.Email)      
+       
+   }
+</div>
+
+@section viewStyles{
+      @Styles.Render("~/Content/ViewStyle")
+    
+    }
+
+<script type="text/javascript" src="~/ViewModel/RegisterViewModel.js"></script>
+<script src="~/Scripts/Application/RegisterDialog.js"></script>
+<script type="text/javascript">
+
+    
+    $(function () {
+
+        //Register view model only needs a $.AJAX post
+        RegisterDialog.ModalEvents
+
+    });
+
+</script>

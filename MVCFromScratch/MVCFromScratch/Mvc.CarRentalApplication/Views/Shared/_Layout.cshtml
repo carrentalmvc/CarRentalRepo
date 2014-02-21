@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("viewStyles",required:false)
+</head>
+<body>
+    <header>
+        <div id="Topmenu">
+            Car Rental Application
+
+        </div>
+
+    </header>
+    <div id="childView">
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+
+    <footer>
+        This i sFooter
+
+    </footer>
+</body>
+</html>

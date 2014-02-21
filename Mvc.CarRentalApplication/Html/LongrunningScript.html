@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Long running script error</title>
+    <script src="../Scripts/jquery-1.8.2.min.js"></script>
+    <script src="../Scripts/knockout-3.0.0.js"></script>
+    <script src="JqueryUtility.js"></script>
+</head>
+<body>
+    <table>
+        <tbody data-bind="foreach:Data(),visible:Data()">
+            <tr>
+                <td>First Name:</td>
+                <td data-bind="text: FirstName"></td>
+            </tr>
+
+            <tr>
+                <td>Last Name:</td>
+                <td data-bind="text:LastName"></td>
+            </tr>
+            <tr>
+                <td>User Name:</td>
+                <td data-bind="text:Username"></td>
+            </tr>
+
+            <tr>
+                <td>Zip Code</td>
+                <td data-bind="text: Zip"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</body>
+</html>

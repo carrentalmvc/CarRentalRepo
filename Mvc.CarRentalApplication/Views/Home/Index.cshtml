@@ -1,0 +1,27 @@
+﻿@model CarRentals.Model.Login
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Please Login</h2>
+
+
+<div class="LoginDiv">
+
+    @using (Html.BeginForm("Login","Login",FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        @Html.LabelFor( u => u.Email)
+        @Html.TextBoxFor( u => u.Email)
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password)
+
+    }
+
+    <input type="submit" value="Login" />
+
+
+</div>
+

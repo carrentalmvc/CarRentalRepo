@@ -1,0 +1,13 @@
+﻿#registerDiv{
+margin:100px;
+border:1px solid red;
+
+}
+
+
+#registerDiv > input
+{
+    display:block;
+    border:1px solid black;
+    
+}

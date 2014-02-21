@@ -1,0 +1,32 @@
+﻿@model CarRentals.Model.Login
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section viewStyles{
+
+    <link href="~/Content/AppStyles/CarRental.css" rel="stylesheet" />
+}
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    
+    @Html.ValidationSummary(true)
+     
+    <div id="loginDiv">
+        <div class="innerDiv">
+            @Html.LabelFor(l => l.Email)
+            @Html.TextBoxFor(l => l.Email)
+            @Html.ValidationMessageFor(l => l.Email)
+
+
+            @Html.LabelFor(p => p.Password)
+            @Html.PasswordFor(p => p.Password)
+            @Html.ValidationMessageFor(p => p.Password)
+
+
+            <input type="submit" value="Log In" id="btnSubmit" />
+        </div>
+    </div>
+}
