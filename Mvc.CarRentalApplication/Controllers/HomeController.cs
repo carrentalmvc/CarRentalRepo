@@ -13,7 +13,7 @@ namespace Mvc.CarRentalApplication.Controllers
         public ActionResult Index()
         {
             return View();
-        }
+        }       
 
     }
 }
