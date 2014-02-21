@@ -25,5 +25,10 @@ namespace CarRentals.Model
         public string ConfirmPassword { get; set; }
     }
 
+  public class Login
+  { 
+    
+  }
+
   
 }

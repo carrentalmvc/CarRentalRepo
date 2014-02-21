@@ -13,6 +13,9 @@ namespace CarRentals.Util
 
            var plainTextbytes = System.Text.Encoding.UTF8.GetBytes(queryString);
            return Convert.ToBase64String(plainTextbytes);
+
+
+
        }
     }
 }
