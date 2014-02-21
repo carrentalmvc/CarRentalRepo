@@ -10,7 +10,7 @@ namespace CarRentals.DataAccess.ADONET
 {
    public  class UserDAL
     {
-
+      //Add ubit tests too ,when you push a functionality
        public UserDAL(string connString)
        {
            this.ConnectionString = connString;
