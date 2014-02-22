@@ -22,7 +22,7 @@ namespace CarRentals.DataAccess.ADONET
 
        public int AddUser(CarRentalUser user)
        {
-
+           //This is the AddUserMethod
            int retVal = 0;
            using (var cmd = new SqlCommand("dbo.AddCarRentalUser"))
            {
