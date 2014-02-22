@@ -10,8 +10,7 @@ namespace CarRentals.DataAccess.ADONET
 {
    public  class UserDAL
     {
-      //test @ 11.07 pm
-       //test @11.34 pm---Anil
+      //Deleting comments
        public UserDAL(string connString)
        {
            this.ConnectionString = connString;
@@ -21,7 +20,7 @@ namespace CarRentals.DataAccess.ADONET
 
        public int AddUser(CarRentalUser user)
        {
-
+           //This is the AddUserMethod
            int retVal = 0;
            using (var cmd = new SqlCommand("dbo.AddCarRentalUser"))
            {
