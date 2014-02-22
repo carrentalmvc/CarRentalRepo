@@ -1,2 +1,4 @@
 ﻿http://www.brianlegg.com/post/2011/05/09/Implementing-your-own-RoleProvider-and-MembershipProvider-in-MVC-3.aspx
 The above site has got some awesome code samples for implementing a custom membership provider in MVC 3
+
+http://blog.gauffin.org/2013/01/ado-net-the-right-way/
