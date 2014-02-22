@@ -16,8 +16,8 @@ namespace CarRentals.DataAccess
       public CarRentalUserMap()
       {
           HasKey(p => p.UserId);
-          Property(p => p.UserName).HasMaxLength(250).IsRequired();
-          Property(p => p.Email).HasMaxLength(25).IsRequired();
+          Property(p => p.FirstName).HasMaxLength(250).IsRequired();
+          Property(p => p.EmailAddress).HasMaxLength(25).IsRequired();
           Property(p => p.Password).HasMaxLength(10).IsRequired();
       }
     }

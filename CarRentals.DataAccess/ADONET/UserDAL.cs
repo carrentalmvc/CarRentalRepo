@@ -31,7 +31,7 @@ namespace CarRentals.DataAccess.ADONET
                    con.Open();
                    cmd.Parameters.AddWithValue("@UserId", 0);
                    cmd.Parameters["@UserId"].Direction = System.Data.ParameterDirection.Output;
-                   cmd.Parameters.AddWithValue("@UserName", user.UserName);
+                   cmd.Parameters.AddWithValue("@UserName", user.EmailAddress);
                    cmd.Parameters.AddWithValue("@Password", user.Password);
                    retVal = cmd.ExecuteNonQuery();
                }
