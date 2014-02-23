@@ -11,7 +11,7 @@ namespace CarRental.Repository.Contracts
     {
        void Add(T entity);
 
-       void Delete(T entity);
+       void Delete(int Id);
 
        void Update(T entity);
 

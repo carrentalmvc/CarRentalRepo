@@ -12,12 +12,5 @@ namespace CarRentals.Repository
     {
 
         bool ValidateUser(CarRentalUser user);
-
-        int Insert(CarRentalUser user);
-
-        IEnumerable<CarRentalUser> SelectAll();
-
-        CarRentalUser GetUserById(int userId);
-
     }
 }

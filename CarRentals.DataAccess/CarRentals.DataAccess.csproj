@@ -50,6 +50,7 @@
     <Compile Include="Contracts\IDbContext.cs" />
     <Compile Include="DBContext\CarRentalDbContext.cs" />
     <Compile Include="Mappers\CarRentalUserMap.cs" />
+    <Compile Include="Mappers\MapToStoredProcedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
