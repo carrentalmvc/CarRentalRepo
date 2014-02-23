@@ -10,7 +10,9 @@ namespace CarRentals.DataAccess.ADONET
 {
    public  class UserDAL
     {
-      //Deleting comments
+      //test @ 11.07 pm
+       //test @11.34 pm---Anil
+       //test to compare files
        public UserDAL(string connString)
        {
            this.ConnectionString = connString;
