@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CarRentals.Model;
+using CarRentals.Model.DomainObjects;
 
 namespace CarRentals.DataAccess
 {

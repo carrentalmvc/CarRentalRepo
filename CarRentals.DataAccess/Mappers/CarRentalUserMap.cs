@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration;
-using CarRentals.Model;
+using CarRentals.Model.DomainObjects;
 
 namespace CarRentals.DataAccess
 {
@@ -16,6 +16,9 @@ namespace CarRentals.DataAccess
       public CarRentalUserMap()
       {
           HasKey(p => p.UserId);
+          HasRequired(p => p.UserRole)
+              .WithMany(p => p.Users)
+              .HasForeignKey(p => p.RoleId);
           Property(p => p.FirstName).HasMaxLength(250).IsRequired();
           Property(p => p.EmailAddress).HasMaxLength(25).IsRequired();
           Property(p => p.Password).HasMaxLength(10).IsRequired();

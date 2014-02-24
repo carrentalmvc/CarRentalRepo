@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainObjects\CarRentalRole.cs" />
+    <Compile Include="DomainObjects\Location.cs" />
+    <Compile Include="Enums\CarRentalRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainObjects\CarRentalUser.cs" />
   </ItemGroup>

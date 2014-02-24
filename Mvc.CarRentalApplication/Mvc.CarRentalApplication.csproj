@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="CustomFilters\AntiForgeryAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,9 +263,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarRentals.Core\CarRentals.Core.csproj">
+      <Project>{332fa183-4c24-4b19-98b4-2fc4e7833a3c}</Project>
+      <Name>CarRentals.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRentals.Model\CarRentals.Model.csproj">
       <Project>{285ca37b-5527-4eac-b8f1-75c8af8ff218}</Project>
       <Name>CarRentals.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRentals.Services\CarRentals.Services.csproj">
+      <Project>{82323095-c04e-4c5b-ad1d-40e0ad063768}</Project>
+      <Name>CarRentals.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

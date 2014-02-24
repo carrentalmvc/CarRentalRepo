@@ -53,7 +53,9 @@
     <Compile Include="DBContext\DatabaseFactory.cs" />
     <Compile Include="DBContext\Disposable.cs" />
     <Compile Include="Mappers\CarRentalUserMap.cs" />
+    <Compile Include="Mappers\LocationMap.cs" />
     <Compile Include="Mappers\MapToStoredProcedures.cs" />
+    <Compile Include="Mappers\RoleMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
