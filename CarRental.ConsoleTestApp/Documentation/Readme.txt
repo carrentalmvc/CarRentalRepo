@@ -2,3 +2,6 @@
 The above site has got some awesome code samples for implementing a custom membership provider in MVC 3
 
 http://blog.gauffin.org/2013/01/ado-net-the-right-way/
+
+Please see the documentation of the architechture of this project here
+http://efmvc.codeplex.com/(see the Blog Posts about EFMVC 1.0) by Shiju varghese

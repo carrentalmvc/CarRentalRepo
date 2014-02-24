@@ -47,8 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ADONET\UserDAL.cs" />
+    <Compile Include="Contracts\IDatabaseFactory.cs" />
     <Compile Include="Contracts\IDbContext.cs" />
     <Compile Include="DBContext\CarRentalDbContext.cs" />
+    <Compile Include="DBContext\DatabaseFactory.cs" />
+    <Compile Include="DBContext\Disposable.cs" />
     <Compile Include="Mappers\CarRentalUserMap.cs" />
     <Compile Include="Mappers\MapToStoredProcedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

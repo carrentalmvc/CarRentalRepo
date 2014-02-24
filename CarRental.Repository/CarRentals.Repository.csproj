@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CarRental.Repository</RootNamespace>
-    <AssemblyName>CarRental.Repository</AssemblyName>
+    <AssemblyName>CarRentals.Repository</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\ICarRentalUserRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CarRentalUserRepository.cs" />
-    <Compile Include="UnitOfWork\CarRentalUserUnitOfWork.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarRentals.DataAccess\CarRentals.DataAccess.csproj">

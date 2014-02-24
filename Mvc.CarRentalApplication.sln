@@ -13,7 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentals.Util", "CarRenta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrental.UnitTest", "Carrental.UnitTest\Carrental.UnitTest.csproj", "{DBE555F9-C692-4ACF-A83F-B25751BDB29E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Repository", "CarRental.Repository\CarRental.Repository.csproj", "{44146D57-7D2B-4A19-B21F-EF3C5409C0A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentals.Repository", "CarRental.Repository\CarRentals.Repository.csproj", "{44146D57-7D2B-4A19-B21F-EF3C5409C0A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentals.Services", "CarRentals.Services\CarRentals.Services.csproj", "{82323095-C04E-4C5B-AD1D-40E0AD063768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentals.Core", "CarRentals.Core\CarRentals.Core.csproj", "{332FA183-4C24-4B19-98B4-2FC4E7833A3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,14 @@ Global
 		{44146D57-7D2B-4A19-B21F-EF3C5409C0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44146D57-7D2B-4A19-B21F-EF3C5409C0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44146D57-7D2B-4A19-B21F-EF3C5409C0A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82323095-C04E-4C5B-AD1D-40E0AD063768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82323095-C04E-4C5B-AD1D-40E0AD063768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82323095-C04E-4C5B-AD1D-40E0AD063768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82323095-C04E-4C5B-AD1D-40E0AD063768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{332FA183-4C24-4B19-98B4-2FC4E7833A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{332FA183-4C24-4B19-98B4-2FC4E7833A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{332FA183-4C24-4B19-98B4-2FC4E7833A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{332FA183-4C24-4B19-98B4-2FC4E7833A3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

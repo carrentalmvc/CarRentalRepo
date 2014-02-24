@@ -20,7 +20,9 @@ namespace Mvc.CarRentalApplication
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);            
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //This will register the Unity with Mvc
+            Bootstrapper.Initialise();
         }
 
         void Application_Error(object sender, EventArgs e)

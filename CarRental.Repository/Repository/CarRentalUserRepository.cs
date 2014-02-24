@@ -12,12 +12,17 @@ namespace CarRentals.Repository
     /// <summary>
     /// Each repository needs to be supplied with a DbContext(This should be done by UnitOfWork)
     /// </summary>
-    public class CarRentalUserRepository
+    public class CarRentalUserRepository : RepositoryBase<CarRentalUser>, ICarRentalUserRepository
     {
-        public CarRentalUserRepository(CarRentalDbContext cxt)
+        public CarRentalUserRepository(IDatabaseFactory databaseFactory) : base(databaseFactory)
         {
             
         }
         
+    }
+
+    public interface ICarRentalUserRepository : IRepository<CarRentalUser>
+    { 
+    
     }
 }

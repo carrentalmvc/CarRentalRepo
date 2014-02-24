@@ -12,7 +12,7 @@ namespace CarRentals.DataAccess
     /// <summary>
     /// DbC ontext is the gateway to the databse
     /// </summary>
-    public class CarRentalDbContext : DbContext , IDbContext
+    public class CarRentalDbContext : DbContext
     {
         static CarRentalDbContext()
         {
@@ -24,7 +24,14 @@ namespace CarRentals.DataAccess
        {
          
        }
+
+      //Rennish :Add all the DbSet<T> here for Phase I
        public DbSet<CarRentalUser> Users { get; set; }
+
+       public virtual void Commit()
+       {
+           base.SaveChanges();
+       }
 
        protected override void OnModelCreating(DbModelBuilder modelBuilder)
        {

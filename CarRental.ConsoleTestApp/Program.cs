@@ -4,45 +4,22 @@ using System.Linq;
 
 namespace CarRental.ConsoleTestApp
 {
+    /// <summary>
+    /// This project is basically used to do all the testing
+    /// </summary>
     public class Program 
     {
         private static void Main(string[] args)
         {
+            //Implementing a dispose pattern
+            //http://msdn.microsoft.com/en-us/library/fs2xkftw(v=vs.110).aspx
 
-            var mgr = new Manager("Rennish Joseph");
-            Console.WriteLine("Employee Name is {0}", mgr.Name);
-
+           
             Console.ReadLine();
 
         }
         
     }
 
-    public abstract class Employee
-    {
-        public Employee(string name)
-        {
-            this.Name = name;
-        }
-
-        public string Name { get; set; }
-
-        public abstract void Show();
-    }
-
-    public class Manager : Employee    
-    {
-        public Manager(string name ) : base(name)
-        {
-
-        }
-
-        public override void Show()
-        {
-           // Console.WriteLine(" Employee name is {0}", this.Name);
-        }
-    }
-
-
-    
+   
 }
