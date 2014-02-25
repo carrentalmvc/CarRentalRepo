@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{82323095-C04E-4C5B-AD1D-40E0AD063768}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarRentals.Services</RootNamespace>
+    <AssemblyName>CarRentals.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandHandler\ICommandHandler.cs" />
+    <Compile Include="CommandHandler\User\UserRegisterHandler.cs" />
+    <Compile Include="Commands\UserRegisterCommand.cs" />
+    <Compile Include="Command\CommandResult.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\ICommandResult.cs" />
+    <Compile Include="Dispatcher\ICommandBus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validations\IValidationHandler.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CarRental.Repository\CarRentals.Repository.csproj">
+      <Project>{44146d57-7d2b-4a19-b21f-ef3c5409c0a0}</Project>
+      <Name>CarRentals.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRentals.Core\CarRentals.Core.csproj">
+      <Project>{332fa183-4c24-4b19-98b4-2fc4e7833a3c}</Project>
+      <Name>CarRentals.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRentals.Model\CarRentals.Model.csproj">
+      <Project>{285ca37b-5527-4eac-b8f1-75c8af8ff218}</Project>
+      <Name>CarRentals.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
