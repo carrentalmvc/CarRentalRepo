@@ -1,4 +1,4 @@
-﻿@model CarRentals.Model.CarRentalUser
+﻿@model CarRentals.Model.DomainObjects.CarRentalUser
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,7 @@
     {
         @Html.ValidationSummary(true)
         @Html.AntiForgeryToken()
-        @Html.LabelFor( u => u.EmailAddress )
+        @Html.LabelFor( u => u.EmailAddress)
         @Html.TextBoxFor( u => u.EmailAddress )
         @Html.LabelFor(m => m.Password)
         @Html.PasswordFor(m => m.Password)
