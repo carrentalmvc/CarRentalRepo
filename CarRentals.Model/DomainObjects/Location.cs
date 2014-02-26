@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarRentals.Model.DomainObjects
 {
@@ -19,14 +15,13 @@ namespace CarRentals.Model.DomainObjects
         public string Zip { get; set; }
 
         public string State { get; set; }
+
         public DateTime CreatedDtm { get; set; }
+
         public DateTime UpdatedDtm { get; set; }
 
         public bool IsActive { get; set; }
 
         public bool IsDeleted { get; set; }
-
-
-
     }
 }

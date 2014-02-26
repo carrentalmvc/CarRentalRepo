@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarRentals.Core.Common;
-using CarRentals.Services.Command;
-
 namespace CarRentals.Services.Validations
 {
-   public interface IValidationHandler<TCommand> where TCommand : ICommand
+   public interface IValidationHandler<T> where T : class
     {
-       IEnumerable<ValidationResult> Validate(TCommand command);
+       IEnumerable<ValidationResult> Validate(T entity);
     }
 }

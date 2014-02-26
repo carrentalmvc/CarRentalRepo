@@ -15,7 +15,7 @@ namespace CarRentals.DataAccess
     {
       public CarRentalUserMap()
       {
-          HasKey(p => p.UserId);
+          HasKey(p => p.UserId);          
           HasRequired(p => p.UserRole)
               .WithMany(p => p.Users)
               .HasForeignKey(p => p.RoleId);

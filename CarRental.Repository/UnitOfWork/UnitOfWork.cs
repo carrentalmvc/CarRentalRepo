@@ -9,27 +9,28 @@ namespace CarRentals.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IDatabaseFactory databaseFactory;
+        //private readonly IDatabaseFactory databaseFactory;
 
         private CarRentalDbContext _dbContext;
 
         public UnitOfWork(IDatabaseFactory databaseFactory)
         {
-            this.databaseFactory = databaseFactory;
+            this.DataContext = databaseFactory.DbContext;
         }
 
         public void Commit()
         {
-            DataContext.Commit();
+            if (DataContext != null)
+            {
+                DataContext.Commit();
+            }
         }
 
         public CarRentalDbContext DataContext
         {
-            get {
+            get { return _dbContext; }
 
-                return (_dbContext ?? new CarRentalDbContext());
-            }
-           
+            set { _dbContext = value; }
         }
     }
 }

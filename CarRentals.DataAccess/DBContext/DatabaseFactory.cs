@@ -9,13 +9,27 @@ namespace CarRentals.DataAccess
     /// <summary>
     /// This class returns an instance of the CarRentalDbContext an also calles Dispose() on that
     /// </summary>
-   public  class DatabaseFactory : Disposable ,IDatabaseFactory
+    public class DatabaseFactory : Disposable, IDatabaseFactory
     {
        private CarRentalDbContext _carrentalDataContext = null;
+       public DatabaseFactory()
+       {
+           //this.GetDatabaseContext();
 
-        public CarRentalDbContext GetDatabaseContext()
+           this._carrentalDataContext = DbContext;
+       }
+
+        //public CarRentalDbContext GetDatabaseContext()
+        //{
+        //    return (_carrentalDataContext ?? new CarRentalDbContext());
+        //}
+
+        public CarRentalDbContext DbContext
         {
-            return (_carrentalDataContext ?? new CarRentalDbContext());
+            get {
+
+                return (_carrentalDataContext ?? new CarRentalDbContext());
+            }
         }
 
         protected override void DisposeCore()

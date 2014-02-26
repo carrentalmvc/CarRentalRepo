@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using CarRentals.Model.DomainObjects;
 
-namespace CarRentals.DataAccess.Mappers
+namespace CarRentals.DataAccess
 {
 
-    public class RoleMap : EntityTypeConfiguration<CarRentalRole>
+    public class CarRentalRoleMap : EntityTypeConfiguration<CarRentalRole>
     {
-        public RoleMap()
+        public CarRentalRoleMap()
         {
             HasKey(p => p.RoleId);
             Property(p => p.RoleName).HasMaxLength(25).IsRequired();

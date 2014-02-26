@@ -8,6 +8,6 @@ namespace CarRentals.DataAccess
 {
    public interface IDatabaseFactory
     {
-       CarRentalDbContext GetDatabaseContext();
+       CarRentalDbContext DbContext { get;}
     }
 }

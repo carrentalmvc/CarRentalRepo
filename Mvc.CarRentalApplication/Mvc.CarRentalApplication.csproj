@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\QueryStringAdapter.cs" />
+    <Compile Include="ViewModel\AccountViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -264,6 +265,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarRental.Repository\CarRentals.Repository.csproj">
+      <Project>{44146d57-7d2b-4a19-b21f-ef3c5409c0a0}</Project>
+      <Name>CarRentals.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRentals.Core\CarRentals.Core.csproj">
       <Project>{332fa183-4c24-4b19-98b4-2fc4e7833a3c}</Project>
       <Name>CarRentals.Core</Name>

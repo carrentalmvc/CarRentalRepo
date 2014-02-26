@@ -1,37 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using CarRentals.Services;
 using CarRentals.Model.DomainObjects;
+using CarRentals.Repository;
+using CarRentals.Core.Common;
 
 namespace Mvc.CarRentalApplication.Controllers
 {
     public class RegisterController : Controller
     {
-        //Register/Register
+        private readonly ICarRentalUserRepository _userRepo;
+        private readonly IUnitOfWork _uow;
+
+        public RegisterController(ICarRentalUserRepository repo ,IUnitOfWork uow)
+        {
+            this._userRepo = repo;
+            this._uow = uow;
+        }
+
         [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
 
-        
         [HttpPost]
-        [ValidateJsonAntiForgeryToken]
-        public ActionResult Register(CarRentalUser model)
-        {
-
+        [AllowAnonymous]
+        public ViewResult Register(AccountViewModel user)
+        {            
             if (ModelState.IsValid)
-            { 
-               return Json(new {Message="Post was successful"});
-            }
-
-            else
             {
-                return Json(new { Message = "Post was failure" });
+                ViewBag.Message = null;
+                try
+                {
+                    //To Do: Use Auto mappers
+                    var internalModal = new CarRentalUser
+                    {
+                        RoleId = user.RoleId,
+                        UserId = user.UserId,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        EmailAddress = user.EmailAddress,
+                        Password = Encryption.Encrypt(user.PasswordText)
+                    };
+
+                    if (new CarRentalMembershipProvider(_userRepo, _uow).CreateUser(internalModal))
+                    {
+                        ViewBag.Message = "User created successfully";
+                    }
+
+                    else
+                    {
+                        ViewBag.Message = "User creation Failed";
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
             }
 
+            return View(ViewBag.Message);
+
+            
         }
     }
 }

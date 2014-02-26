@@ -1,4 +1,4 @@
-﻿@model CarRentals.Model.DomainObjects.CarRentalUser
+﻿@model  Mvc.CarRentalApplication.AccountViewModel
 
 <div id="registerDiv">
   
@@ -16,33 +16,26 @@
        @Html.TextBoxFor(m => m.LastName)
 
 
-       @Html.LabelFor(m => m.Password)
-       @Html.PasswordFor(m => m.Password)
+       @Html.LabelFor(m => m.PasswordText)
+       @Html.PasswordFor(m => m.PasswordText)
 
        @Html.LabelFor(m => m.ConfirmPassword)
        @Html.PasswordFor(m => m.ConfirmPassword)
 
        @Html.LabelFor(m => m.EmailAddress)
-       @Html.TextBoxFor(m => m.EmailAddress)      
+       @Html.TextBoxFor(m => m.EmailAddress)     
+       
+       <input type="submit" value="Register" /> 
        
    }
 </div>
+
+@if (ViewBag.Message != null)
+{ 
+   <h3>ViewBag.Message </h3>
+}
 
 @section viewStyles{
       @Styles.Render("~/Content/ViewStyle")
     
     }
-
-<script type="text/javascript" src="~/ViewModel/RegisterViewModel.js"></script>
-<script src="~/Scripts/Application/RegisterDialog.js"></script>
-<script type="text/javascript">
-
-    
-    $(function () {
-
-        //Register view model only needs a $.AJAX post
-        RegisterDialog.ModalEvents
-
-    });
-
-</script>

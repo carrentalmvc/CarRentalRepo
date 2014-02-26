@@ -18,19 +18,22 @@ namespace CarRentals.Repository
 
        public RepositoryBase(IDatabaseFactory databseFactory)
        {
-           DatabaseFactory = databseFactory;
+           //DatabaseFactory = databseFactory;
+           this.DataContext = databseFactory.DbContext;
            dbset = DataContext.Set<T>();
        }
 
-       protected IDatabaseFactory DatabaseFactory { get;private set; }
+       //protected IDatabaseFactory DatabaseFactory { get;private set; }
 
        protected CarRentalDbContext DataContext
        {
-           get 
+           get
            {
-               return (_dbcontext ?? DatabaseFactory.GetDatabaseContext());
-             
+               return _dbcontext;
+
            }
+
+           set { _dbcontext = value; }
        }
 
        public virtual void Add(T entity)
@@ -41,7 +44,7 @@ namespace CarRentals.Repository
        public virtual void Update(T entity)
        {
            dbset.Attach(entity);
-           _dbcontext.Entry(entity).State = EntityState.Modified;
+           DataContext.Entry(entity).State = EntityState.Modified;
 
        }
 

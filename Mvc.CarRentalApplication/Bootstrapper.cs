@@ -2,7 +2,7 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc4;
 using CarRentals.Model.DomainObjects;
-
+using CarRentals.Repository;
 
 namespace Mvc.CarRentalApplication
 {
@@ -34,7 +34,7 @@ namespace Mvc.CarRentalApplication
         }
 
         public static void RegisterTypes(IUnityContainer container)
-        {
+        {            
             container.RegisterTypes(
                      AllClasses.FromLoadedAssemblies(),
                      WithMappings.FromMatchingInterface,
