@@ -73,6 +73,18 @@ namespace CarRentals.Services
 
         }
 
+        public override bool ValidateUser(string emailAddress, string txtpassword)
+        {
+            bool retVal = false;
+            var user = _repo.Get(u => u.EmailAddress == emailAddress);
+            if (user != null && (Encryption.Decrypt(user.Password) == txtpassword))
+            {
+                retVal = true;
+            }
+
+            return retVal;
+        }
+
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
             throw new NotImplementedException();
@@ -218,10 +230,7 @@ namespace CarRentals.Services
             throw new NotImplementedException();
         }
 
-        public override bool ValidateUser(string username, string password)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         #endregion
     }

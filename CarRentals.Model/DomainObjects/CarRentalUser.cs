@@ -1,4 +1,5 @@
-﻿namespace CarRentals.Model.DomainObjects
+﻿using CarRentals.Core.Common;
+namespace CarRentals.Model.DomainObjects
 {
     public class CarRentalUser
     {
@@ -9,9 +10,8 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public byte[] Password { get; set; }
-
+        public byte[] Password { get; set; }    
+        
         public bool IsActive { get; set; }
 
         public int RoleId { get; set; }

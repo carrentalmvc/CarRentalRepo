@@ -19,6 +19,7 @@ namespace CarRentals.DataAccess
           HasRequired(p => p.UserRole)
               .WithMany(p => p.Users)
               .HasForeignKey(p => p.RoleId);
+          //Ignore(p => p.PasswordText);
           Property(p => p.FirstName).HasMaxLength(250).IsRequired();
           Property(p => p.EmailAddress).HasMaxLength(25).IsRequired();
           Property(p => p.Password).HasMaxLength(10).IsRequired();

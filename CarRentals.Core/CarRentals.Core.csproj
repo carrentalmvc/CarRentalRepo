@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Encryption.cs" />
     <Compile Include="Common\Md5Encrypt.cs" />
     <Compile Include="Common\ValidationResult.cs" />

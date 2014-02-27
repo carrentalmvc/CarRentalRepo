@@ -1,25 +1,29 @@
-﻿@model CarRentals.Model.DomainObjects.CarRentalUser
+﻿@model Mvc.CarRentalApplication.LoginViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Please Login</h2>
+@ViewBag.Controller 
+@ViewBag.View
 
 
 <div class="LoginDiv">
 
-    @using (Html.BeginForm("Login","Login",FormMethod.Post))
+    @using (Html.BeginForm("Login","Home",FormMethod.Post))
     {
         @Html.ValidationSummary(true)
         @Html.AntiForgeryToken()
         @Html.LabelFor( u => u.EmailAddress)
         @Html.TextBoxFor( u => u.EmailAddress )
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password)
+        @Html.LabelFor(m => m.PasswordText)
+        @Html.PasswordFor(m => m.PasswordText)
+        //make sure that the submit button is inside the form
+        <input type="submit" value="Login" />
 
     }
 
-    <input type="submit" value="Login" />
+    
 </div>
 
