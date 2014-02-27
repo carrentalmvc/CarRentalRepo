@@ -11,3 +11,7 @@ http://genericunitofworkandrepositories.codeplex.com/SourceControl/latest#releas
 
 //Excellent site with each approach
 http://www.entityframeworktutorial.net/code-first/configure-one-to-many-relationship-in-code-first.aspx
+
+
+Danwahlins Web blog
+http://weblogs.asp.net/dwahlin/archive/2011/09/23/using-entity-framework-code-first-with-stored-procedures-that-have-output-parameters.aspx

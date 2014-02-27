@@ -38,8 +38,6 @@ namespace CarRentals.DataAccess
             
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            //To Do: write a  generic method to do this ??
-            //MapToCarRentalUserStoredProcedures.UseStoredProceduresForEntity(modelBuilder);
             modelBuilder.Configurations.Add(new CarRentalUserMap());
             modelBuilder.Configurations.Add(new CarRentalRoleMap());
         }

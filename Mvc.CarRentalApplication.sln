@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc.CarRentalApplication", "Mvc.CarRentalApplication\Mvc.CarRentalApplication.csproj", "{C7E26713-53C9-4238-904C-A5B847CE746F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentals.Web", "Mvc.CarRentalApplication\CarRentals.Web.csproj", "{C7E26713-53C9-4238-904C-A5B847CE746F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentals.DataAccess", "CarRentals.DataAccess\CarRentals.DataAccess.csproj", "{12764091-D8D6-4971-AF7A-6FBB8795B432}"
 EndProject

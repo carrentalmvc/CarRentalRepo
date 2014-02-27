@@ -58,7 +58,7 @@ namespace CarRentals.Services
                         user.UserRole = new CarRentalRole { RoleId = user.RoleId, RoleName = "NormalUser", IsActive = true, CreateDtTm = DateTime.Now };
                     }
                     _repo.Add(user);
-                    _uow.Commit();
+                    //_uow.Commit();
                     return true;
                 }
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
-using CarRentals.Services;
+using CarRentals.Core.Common;
 using CarRentals.Model.DomainObjects;
 using CarRentals.Repository;
-using CarRentals.Core.Common;
+using CarRentals.Services;
 
 namespace Mvc.CarRentalApplication.Controllers
 {
@@ -12,7 +12,7 @@ namespace Mvc.CarRentalApplication.Controllers
         private readonly ICarRentalUserRepository _userRepo;
         private readonly IUnitOfWork _uow;
 
-        public RegisterController(ICarRentalUserRepository repo ,IUnitOfWork uow)
+        public RegisterController(ICarRentalUserRepository repo, IUnitOfWork uow)
         {
             this._userRepo = repo;
             this._uow = uow;
@@ -26,11 +26,11 @@ namespace Mvc.CarRentalApplication.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ViewResult Register(AccountViewModel user)
-        {            
+        public PartialViewResult Register(AccountViewModel user)
+        {
+            var actionResult = new ActionResultViewModel();
             if (ModelState.IsValid)
             {
-                ViewBag.Message = null;
                 try
                 {
                     //To Do: Use Auto mappers
@@ -46,24 +46,21 @@ namespace Mvc.CarRentalApplication.Controllers
 
                     if (new CarRentalMembershipProvider(_userRepo, _uow).CreateUser(internalModal))
                     {
-                        ViewBag.Message = "User created successfully";
+                        actionResult.Message = "User created successfully";
                     }
 
                     else
                     {
-                        ViewBag.Message = "User creation Failed";
+                        actionResult.Message = "User creation Failed";
                     }
                 }
                 catch (Exception ex)
                 {
-
                     throw;
                 }
             }
 
-            return View(ViewBag.Message);
-
-            
+            return PartialView("_ActionResult", actionResult);
         }
     }
 }
