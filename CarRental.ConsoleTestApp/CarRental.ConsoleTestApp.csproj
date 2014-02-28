@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DbScripts\CarRentalInfo.sql" />
+    <Content Include="DbScripts\Insert_CareRentalUser.sql" />
     <Content Include="Documentation\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
