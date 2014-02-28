@@ -16,20 +16,20 @@ namespace CarRental.ConsoleTestApp
     {
         private static void Main(string[] args)
         {
+            //These are samples.
+            var key = "CarRentalKey";
+            var password = "P@ssword900";
 
-            //var key = "Care Rental Application Key kept";
-            //var size = Encoding.ASCII.GetByteCount(key);
-            //var key = "CarRentalPassword";
-            //var encKey = ProtectedData.Protect(Encoding.ASCII.GetBytes(key),null,DataProtectionScope.LocalMachine); 
-   
-            //var base64String = Convert.ToBase64String(encKey);
+            var keyBase64 = AesEncryptionUtility.CreateBase64EncodedEncKey(key);
 
-            //Unprotect
-            var encKey = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["encKey"].ToString()), null, DataProtectionScope.LocalMachine);
+            var passwordBase64 = AesEncryptionUtility.CreateBase64EncodedEncPassword(password);
 
-            var plainText = "P@ssword100";
+            ////Unprotect
+            //var keyUnprotectedBytes = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["encKey"].ToString()), null, DataProtectionScope.LocalMachine);
 
-            var encryptedData = Encrypt(plainText, encKey);
+            //var plainText = "P@ssword100";
+
+            //var encryptedData = Encrypt(plainText, encKey);
            
 
            

@@ -41,7 +41,7 @@ namespace Mvc.CarRentalApplication.Controllers
                         FirstName = user.FirstName,
                         LastName = user.LastName,
                         EmailAddress = user.EmailAddress,
-                        Password = Encryption.Encrypt(user.PasswordText)
+                        PasswordText = user.PasswordText
                     };
 
                     if (new CarRentalMembershipProvider(_userRepo, _uow).CreateUser(internalModal))

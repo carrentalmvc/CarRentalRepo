@@ -10,6 +10,8 @@ using CarRentals.Model.DomainObjects;
 using CarRentals.Core.Common;
 using CarRentals.Services.Validations;
 using System.Web.Mvc;
+using System.Configuration;
+using System.Security.Cryptography;
 
 namespace CarRentals.Services
 {
@@ -57,6 +59,9 @@ namespace CarRentals.Services
                         user.RoleId = (Int32)CarRentals.Model.Enums.CarRentalRole.NormalUser;
                         user.UserRole = new CarRentalRole { RoleId = user.RoleId, RoleName = "NormalUser", IsActive = true, CreateDtTm = DateTime.Now };
                     }
+                    var bytes = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncKeyBase64"]),null,DataProtectionScope.LocalMachine);
+                    var password = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncPasswordBase64"]), null, DataProtectionScope.LocalMachine).ToString();
+                    user.Password = new Encryption(bytes, password).Encrypt(user.PasswordText);
                     _repo.Add(user);
                     //_uow.Commit();
                     return true;
@@ -77,9 +82,15 @@ namespace CarRentals.Services
         {
             bool retVal = false;
             var user = _repo.Get(u => u.EmailAddress == emailAddress);
-            if (user != null && (Encryption.Decrypt(user.Password) == txtpassword))
+            if (user != null)
             {
-                retVal = true;
+                var bytes = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncKeyBase64"]), null, DataProtectionScope.LocalMachine);
+                var password = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncPasswordBase64"]), null, DataProtectionScope.LocalMachine).ToString();
+                var decryptedPassword =  new Encryption(bytes, password).Decrypt(user.Password);
+                if (string.Compare(txtpassword, decryptedPassword, true) == 0)
+                {
+                    retVal = true;
+                }
             }
 
             return retVal;

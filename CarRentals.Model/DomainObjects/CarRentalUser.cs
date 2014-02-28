@@ -10,7 +10,8 @@ namespace CarRentals.Model.DomainObjects
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-        public byte[] Password { get; set; }    
+        public byte[] Password { get; set; }
+        public string PasswordText { get; set; }
         
         public bool IsActive { get; set; }
 
