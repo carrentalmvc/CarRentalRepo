@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckForPalindrome.cs" />
+    <Compile Include="TestClasses\CheckForPalindrome.cs" />
     <Compile Include="EncryptionUtility\AesEncryptionUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,9 +52,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DbScripts\AlterTable\AlterTable_Car.sql" />
     <Content Include="DbScripts\CarRentalInfo.sql" />
     <Content Include="DbScripts\CarRental_Roles.sql" />
     <Content Include="DbScripts\Insert_CareRentalUser.sql" />
+    <Content Include="DbScripts\Insert_Into_Make.sql" />
     <Content Include="Documentation\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
