@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>log4net.samples.rollingfileappender</id>
+    <version>1.0.1</version>
+    <title>Log4Net RollingFileAppender</title>
+    <authors>nuno.costa</authors>
+    <owners>nuno.costa</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Using log4net with RollingFileAppender</description>
+    <summary>This package has the .config setting for using log4net with RollingFileAppender</summary>
+    <tags>log4net rollingfile appender</tags>
+  </metadata>
+</package>

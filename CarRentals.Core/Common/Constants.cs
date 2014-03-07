@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CarRentals.Core.Common
 {
-  public static  class Constants
+  public static  class CustomEvenetId
     {
-      public const string EncKey = "Care Rental Application Key";
+      public const int ConsoleTestAppErros = 1000;
     }
 }
