@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using log4net;
 
 namespace Mvc.CarRentalApplication
 {
@@ -19,6 +20,7 @@ namespace Mvc.CarRentalApplication
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //This will register the Unity with Mvc
             Bootstrapper.Initialise();
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         private void Application_Error(object sender, EventArgs e)

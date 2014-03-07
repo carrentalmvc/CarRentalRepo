@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Security;
-using CarRentals.Repository;
-using CarRentals.Model.DomainObjects;
-using CarRentals.Core.Common;
-using CarRentals.Services.Validations;
-using System.Web.Mvc;
 using System.Configuration;
+using System.Reflection;
 using System.Security.Cryptography;
+using System.ServiceModel;
+using System.Web.Security;
+using CarRentals.Core.Common;
+using CarRentals.Model.DomainObjects;
+using CarRentals.Repository;
+using CarRentals.Services.Validations;
+using log4net;
 
 namespace CarRentals.Services
 {
@@ -28,29 +25,29 @@ namespace CarRentals.Services
         //}
         //public IUnitOfWork UOW
         //{
-
         //    get
         //    {
         //        return DependencyResolver.Current.GetService<IUnitOfWork>();
         //    }
-        //}        
+        //}
+        private ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private ICarRentalUserRepository _repo;
 
         private IUnitOfWork _uow;
-        public CarRentalMembershipProvider(ICarRentalUserRepository repo ,IUnitOfWork uow)
+
+        public CarRentalMembershipProvider(ICarRentalUserRepository repo, IUnitOfWork uow)
         {
             this._repo = repo;
             this._uow = uow;
         }
+
         #region Useful Methods
 
-
-        public bool CreateUser(CarRentalUser user)
+        public bool CreateUser(CarRentals.Model.DomainObjects.CarRentalUser user)
         {
             try
             {
-
                 var valErrors = new CanCreateNewUser(_repo).Validate(user);
                 if (valErrors == null)
                 {
@@ -59,7 +56,7 @@ namespace CarRentals.Services
                         user.RoleId = (Int32)CarRentals.Model.Enums.CarRentalRole.NormalUser;
                         user.UserRole = new CarRentalRole { RoleId = user.RoleId, RoleName = "NormalUser", IsActive = true, CreateDtTm = DateTime.Now };
                     }
-                    var bytes = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncKeyBase64"]),null,DataProtectionScope.LocalMachine);
+                    var bytes = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncKeyBase64"]), null, DataProtectionScope.LocalMachine);
                     var password = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncPasswordBase64"]), null, DataProtectionScope.LocalMachine).ToString();
                     user.Password = new Encryption(bytes, password).Encrypt(user.PasswordText);
                     _repo.Add(user);
@@ -71,27 +68,57 @@ namespace CarRentals.Services
             }
             catch (Exception ex)
             {
-                //Log the Error to Eventviewer or databse
+                logger.Error(string.Format("Error occurred while creating the user : {0}", ex.Message));
                 throw;
             }
-
-
         }
 
         public override bool ValidateUser(string emailAddress, string txtpassword)
         {
             bool retVal = false;
-            var user = _repo.Get(u => u.EmailAddress == emailAddress);
-            if (user != null)
+           CarRentals.Services.CarRentalUserServiceProxy.CarRentalUserServiceClient client = null;
+            try
             {
-                var bytes = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncKeyBase64"]), null, DataProtectionScope.LocalMachine);
-                var password = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncPasswordBase64"]), null, DataProtectionScope.LocalMachine).ToString();
-                var decryptedPassword =  new Encryption(bytes, password).Decrypt(user.Password);
-                if (string.Compare(txtpassword, decryptedPassword, true) == 0)
+                //Actually, this service call is unnecessary.Leaving this here to play around with WCF services
+                client = new CarRentals.Services.CarRentalUserServiceProxy.CarRentalUserServiceClient("NetTcpBinding_ICarRentalUserService");
+                var result =  client.ValidateUser(new CarRentalUserServiceProxy.CarRentalUser { EmailAddress = emailAddress });                
+                if (result)
                 {
-                    retVal = true;
+                    var user = _repo.Get(u => u.EmailAddress == emailAddress);
+                    if (user != null)
+                    {
+                        var bytes = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncKeyBase64"]), null, DataProtectionScope.LocalMachine);
+                        var password = ProtectedData.Unprotect(Convert.FromBase64String(ConfigurationManager.AppSettings["EncPasswordBase64"]), null, DataProtectionScope.LocalMachine).ToString();
+                        var decryptedPassword = new Encryption(bytes, password).Decrypt(user.Password);
+                        if (string.Compare(txtpassword, decryptedPassword, true) == 0)
+                        {
+                            retVal = true;
+                        }
+                    }
                 }
+                client.Close();
             }
+
+            catch (FaultException fe)
+            {
+                logger.Error(string.Format("Error from the service operation: {0}", fe.Message));
+                client.Abort();
+                return retVal;
+            }
+
+            catch (CommunicationException ce)
+            {
+                logger.Error(string.Format("Error communicating with the service : {0}", ce.Message));
+                client.Abort();
+                return retVal;
+            }
+
+            catch (TimeoutException te)
+            {
+                logger.Error(string.Format("Timeout EXception while connecting with the  service : {0}", te.Message));
+                client.Abort();
+                return retVal;
+            }            
 
             return retVal;
         }
@@ -106,8 +133,7 @@ namespace CarRentals.Services
             get { throw new NotImplementedException(); }
         }
 
-
-        #endregion
+        #endregion Useful Methods
 
         #region Unused Methods
 
@@ -122,8 +148,6 @@ namespace CarRentals.Services
                 throw new NotImplementedException();
             }
         }
-
-
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
@@ -200,7 +224,6 @@ namespace CarRentals.Services
             get { throw new NotImplementedException(); }
         }
 
-
         public override int PasswordAttemptWindow
         {
             get { throw new NotImplementedException(); }
@@ -241,8 +264,6 @@ namespace CarRentals.Services
             throw new NotImplementedException();
         }
 
-        
-
-        #endregion
+        #endregion Unused Methods
     }
 }
