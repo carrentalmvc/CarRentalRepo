@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using CarRentals.Core.Common;
 using CarRentals.Model.DomainObjects;
 using CarRentals.Repository;
 using CarRentals.Services;

@@ -1,18 +1,25 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Security.Cryptography;
+using System.Xml;
 using CarRentals.Core.Common;
 using CarRentals.Core.Common.Logging;
+using log4net;
 
 namespace CarRental.ConsoleTestApp
 {
     /// <summary>
     /// This project is basically used to do all the testing
     /// </summary>
+   
     public class Program
     {
+        private static  log4net.ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private static void Main(string[] args)
         {
+            ;
             //These are samples.
             //var key = "CarRentalKey";
             //var password = "P@ssword900";
@@ -27,20 +34,36 @@ namespace CarRental.ConsoleTestApp
             //var plainText = "P@ssword100";
 
             //var encryptedData = Encrypt(plainText, encKey);
-            log4net.Config.XmlConfigurator.Configure();
-            ILogger _logger = null;
+            //log4net.Config.XmlConfigurator.Configure();
+            //ILogger _logger = null;
+
+            //try
+            //{
+            //   _logger = LoggerFactory.GetLogger();
+
+            //   string str = null;
+            //   str.EndsWith("Rennish");
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.Log("Console", LogLevel.ERROR, ex.Message, CustomEvenetId.ConsoleTestAppErros.ToString());
+            //}           
 
             try
             {
-               _logger = LoggerFactory.GetLogger();
-
-               string str = null;
-               str.EndsWith("Rennish");
+                var validateXml = new XmlUtility().ValidateXml(@"C:\ASPNET\CarRentalMVCAnilRennish\CarRentalRepo\CarRental.ConsoleTestApp\Xml\Person.xml");
             }
-            catch (Exception ex)
+            catch ( Exception ex)
             {
-                _logger.Log("Console", LogLevel.ERROR, ex.Message, CustomEvenetId.ConsoleTestAppErros.ToString());
+
+                _logger.Error(ex.Message);
+                throw;
+
             }
+
+
+            Console.WriteLine("Successfully validated Xml..");
+
 
             Console.ReadLine();
         }
