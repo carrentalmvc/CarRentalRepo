@@ -2,9 +2,6 @@
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
-using System.Xml;
-using CarRentals.Core.Common;
-using CarRentals.Core.Common.Logging;
 using log4net;
 
 namespace CarRental.ConsoleTestApp
@@ -12,10 +9,10 @@ namespace CarRental.ConsoleTestApp
     /// <summary>
     /// This project is basically used to do all the testing
     /// </summary>
-   
+
     public class Program
     {
-        private static  log4net.ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static log4net.ILog _logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private static void Main(string[] args)
         {
@@ -47,23 +44,44 @@ namespace CarRental.ConsoleTestApp
             //catch (Exception ex)
             //{
             //    _logger.Log("Console", LogLevel.ERROR, ex.Message, CustomEvenetId.ConsoleTestAppErros.ToString());
-            //}           
+            //}
+            XmlValidationStatus _status;
+            bool validationFlag = false;
 
             try
             {
-                var validateXml = new XmlUtility().ValidateXml(@"C:\ASPNET\CarRentalMVCAnilRennish\CarRentalRepo\CarRental.ConsoleTestApp\Xml\Person.xml");
+                _status = new XmlUtility().ValidateXml("C:\\Temp\\Person.xml");
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             {
-
                 _logger.Error(ex.Message);
                 throw;
-
             }
 
+            switch (_status)
+            {
+                case XmlValidationStatus.FailedToParse:
+                    validationFlag = false;
+                    break;
 
-            Console.WriteLine("Successfully validated Xml..");
+                case XmlValidationStatus.FailedSchemaValidation:
+                    validationFlag = false;
+                    break;
 
+                case XmlValidationStatus.ValidXml:
+                    validationFlag = true;
+                    break;
+            }
+
+            if (validationFlag)
+            {
+                Console.WriteLine("Successfully validated Xml..");
+            }
+
+            else
+            {
+                Console.WriteLine("Error Validating the Xml file against the schema....");
+            }
 
             Console.ReadLine();
         }

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO;
+using System.Configuration;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -21,21 +21,18 @@ namespace CarRental.ConsoleTestApp
             try
             {
                 _status = XmlValidationStatus.ValidXml;
+                var schemaLocation = ConfigurationManager.AppSettings["SchemaLocation"].ToString();
                 var settings = new XmlReaderSettings();
                 settings.ValidationType = ValidationType.Schema;
-                settings.ValidationFlags = System.Xml.Schema.XmlSchemaValidationFlags.ProcessInlineSchema;
                 var schemaSet = new XmlSchemaSet();
-                schemaSet.Add("http://www.Carrentals.com/XmlSchemas",@"C:\ASPNET\CarRentalMVCAnilRennish\CarRentalRepo\CarRental.ConsoleTestApp\Xml\Person.xsd");
+                schemaSet.Add(null, schemaLocation);
                 settings.Schemas.Add(schemaSet);
                 settings.ValidationEventHandler += Schema_Validation_ErrorHandler;
 
-                using (var stream = new StreamReader(xml))
+                using (var rdr = XmlReader.Create(new XmlTextReader(xml), settings))
                 {
-                    using (var rdr = XmlReader.Create(stream, settings))
+                    while (rdr.Read())
                     {
-                        while (rdr.Read())
-                        {
-                        }
                     }
                 }
             }

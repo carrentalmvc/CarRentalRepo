@@ -11,7 +11,7 @@
               <xs:element name="Address">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="ZipCode" type="xs:unsignedShort" />
+                    <xs:element name="ZipCode" type="ZipCodeType" />
                     <xs:element name="City" type="xs:string" />
                     <xs:element name="State" type="xs:string" />
                   </xs:sequence>
@@ -23,4 +23,9 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:simpleType name="ZipCodeType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{5}"></xs:pattern>
+    </xs:restriction>    
+  </xs:simpleType>
 </xs:schema>
