@@ -25,6 +25,7 @@
   </xs:element>
   <xs:simpleType name="ZipCodeType">
     <xs:restriction base="xs:string">
+      <!-- This pattern allows only 5 digits for Zip Code-->
       <xs:pattern value="[0-9]{5}"></xs:pattern>
     </xs:restriction>    
   </xs:simpleType>

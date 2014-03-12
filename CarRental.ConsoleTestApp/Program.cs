@@ -45,43 +45,50 @@ namespace CarRental.ConsoleTestApp
             //{
             //    _logger.Log("Console", LogLevel.ERROR, ex.Message, CustomEvenetId.ConsoleTestAppErros.ToString());
             //}
-            XmlValidationStatus _status;
-            bool validationFlag = false;
+            //XmlValidationStatus _status;
+            //bool validationFlag = false;
 
-            try
-            {
-                _status = new XmlUtility().ValidateXml("C:\\Temp\\Person.xml");
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.Message);
-                throw;
-            }
+            //try
+            //{
+            //    _status = new XmlUtility().ValidateXml("C:\\Temp\\Person.xml");
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.Error(ex.Message);
+            //    throw;
+            //}
 
-            switch (_status)
-            {
-                case XmlValidationStatus.FailedToParse:
-                    validationFlag = false;
-                    break;
+            //switch (_status)
+            //{
+            //    case XmlValidationStatus.FailedToParse:
+            //        validationFlag = false;
+            //        break;
 
-                case XmlValidationStatus.FailedSchemaValidation:
-                    validationFlag = false;
-                    break;
+            //    case XmlValidationStatus.FailedSchemaValidation:
+            //        validationFlag = false;
+            //        break;
 
-                case XmlValidationStatus.ValidXml:
-                    validationFlag = true;
-                    break;
-            }
+            //    case XmlValidationStatus.ValidXml:
+            //        validationFlag = true;
+            //        break;
+            //}
 
-            if (validationFlag)
-            {
-                Console.WriteLine("Successfully validated Xml..");
-            }
+            //if (validationFlag)
+            //{
+            //    Console.WriteLine("Successfully validated Xml..");
+            //}
 
-            else
-            {
-                Console.WriteLine("Error Validating the Xml file against the schema....");
-            }
+            //else
+            //{
+            //    Console.WriteLine("Error Validating the Xml file against the schema....");
+            //}
+
+            var sample = new SampleClass();
+            IControl ctrl = sample as IControl;
+            ctrl.Paint();
+
+            ISurface surf = sample as ISurface;
+            surf.Paint();
 
             Console.ReadLine();
         }

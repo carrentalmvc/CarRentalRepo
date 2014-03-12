@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractFactoryPattern\AgentA_Xml.cs" />
+    <Compile Include="AbstractFactoryPattern\DatabseAgentFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\IAgentFactory.cs" />
+    <Compile Include="AbstractFactoryPattern\XmlAgentFactory.cs" />
+    <Compile Include="ExplicitInterfaceImplementation\SampleClass.cs" />
     <Compile Include="TestClasses\CheckForPalindrome.cs" />
     <Compile Include="EncryptionUtility\AesEncryptionUtility.cs" />
     <Compile Include="Program.cs" />
