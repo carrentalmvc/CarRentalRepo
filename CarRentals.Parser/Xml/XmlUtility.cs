@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace CarRentals.Core
+namespace CarRentals.Parser
 {
     public enum XmlValidationStatus
     {

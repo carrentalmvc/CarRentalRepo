@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CarRentals.Core
+namespace CarRentals.Parser
 {
     public class CsvParser<T> : IParser<T> where T : class
     {

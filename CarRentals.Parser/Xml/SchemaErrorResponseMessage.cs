@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarRentals.Core
+namespace CarRentals.Parser
 {
    public class SchemaErrorResponseMessage
     {
