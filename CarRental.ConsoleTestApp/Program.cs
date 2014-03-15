@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
+using CarRentals.Core;
 using log4net;
 
 namespace CarRental.ConsoleTestApp
@@ -83,13 +85,50 @@ namespace CarRental.ConsoleTestApp
             //    Console.WriteLine("Error Validating the Xml file against the schema....");
             //}
 
-            var sample = new SampleClass();
-            IControl ctrl = sample as IControl;
-            ctrl.Paint();
+            //try
+            //{
+            //    var sw = new Stopwatch();
+            //    sw.Start();
+            //    var list = new YieldReturnTest().CheckListWithYieldReturn(1);
+            //    sw.Stop();
+            //    var timespan = sw.Elapsed;
+            //    if (true)
+            //    {
+            //       // Console.WriteLine("Item in the list is {0}", list.ToArray()[0]);
+            //    }
+            //    Console.WriteLine("The method took {0} milliseconds", timespan.Milliseconds);
+            //}
 
-            ISurface surf = sample as ISurface;
-            surf.Paint();
+            //catch (Exception ex)
+            //{
+            //    _logger.Error(ex.Message);
+            
+            //}
 
+            
+            try
+            {
+                //Xmlserializer test
+
+                var oi = new OrderedItem();
+                oi.Description = "Test decsription";
+                oi.ItemName = "Test Item";
+                oi.LineTotal = 298.00M;
+                oi.Quantity = 200;
+                new SerializationUtility().XmlStringSerializeToFile(oi);
+
+                //var obj = new SerializationUtility().DeSerialize<OrderedItem>(xmlString);
+
+                //Console.WriteLine("Deserialised object type is {0}", obj.GetType());
+                
+                //Console.WriteLine(xmlString);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+
+                
+            }
             Console.ReadLine();
         }
 

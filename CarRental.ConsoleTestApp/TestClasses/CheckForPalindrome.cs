@@ -19,8 +19,17 @@ namespace CarRental.ConsoleTestApp
             }
 
             return retVal;
-        }
-
-        
+        }        
     }
+
+    public class OrderedItem
+    {
+        public string ItemName;
+        public string Description;
+        public decimal UnitPrice;
+        public int Quantity;
+        public decimal LineTotal;
+
+    }
+
 }
